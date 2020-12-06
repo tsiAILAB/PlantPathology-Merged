@@ -13,7 +13,7 @@ Future<Null> main() async {
   try {
     cameras = await availableCameras();
   } on CameraException catch (e) {
-    print('ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR: $e.code\nError Message: $e.message');
+    print('ERROR: $e.code\nError Message: $e.message');
   }
 
   // Obtain a list of the available cameras on the device.

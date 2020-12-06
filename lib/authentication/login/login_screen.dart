@@ -3,7 +3,6 @@ import 'package:pds/authentication/forget_password_screen.dart';
 import 'package:pds/authentication/signup_page_screen.dart';
 import 'package:pds/models/user.dart';
 import 'package:pds/screens/landing_screen.dart';
-import 'package:pds/landing_screen_live_detec.dart';
 import 'package:pds/services/response/login_response.dart';
 import 'package:pds/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -83,11 +82,13 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
 
   signOut() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    setState(() {
-      preferences.setInt("value", null);
-      preferences.commit();
-      _loginStatus = LoginStatus.notSignIn;
-    });
+    if (mounted) {
+      setState(() {
+        preferences.setInt("value", null);
+        preferences.commit();
+        _loginStatus = LoginStatus.notSignIn;
+      });
+    }
   }
 
   void getPermission() async {
