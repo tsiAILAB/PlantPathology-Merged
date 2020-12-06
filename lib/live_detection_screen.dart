@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
-import 'utils/utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 
-import 'camera.dart';
+import 'package:camera/camera.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'bndbox.dart';
+import 'camera.dart';
 import 'pretrainded_models_const.dart';
+import 'utils/utils.dart';
 
 class LiveDetectionScreen extends StatefulWidget {
   final List<CameraDescription> cameras;
@@ -25,9 +26,6 @@ class _LiveDetectionScreenState extends State<LiveDetectionScreen> {
   int _imageWidth = 0;
   String _model = ssd;
   String userRole;
-
-
-
 
   @override
   void initState() {
@@ -48,30 +46,28 @@ class _LiveDetectionScreenState extends State<LiveDetectionScreen> {
     await Utils.requestStoragePermission();
   }
 
-
   setRecognitions(recognitions, imageHeight, imageWidth) {
     setState(() {
-      try{
+      try {
         _recognitions = recognitions;
         _imageHeight = imageHeight;
         _imageWidth = imageWidth;
 
-        if(_recognitions == null){
-          print ("RECOGNITION IS NULLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL...................!!!!!!!!!!!!!!!!!!!!");
+        if (_recognitions == null) {
+          print("RECOGNITION IS NULL!");
         }
-      } catch (e){
-        print ("ERROR ISSSSSSSSSS IN Recognitions : "+e);
+      } catch (e) {
+        print("ERROR IS IN Recognitions : " + e);
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.modelName+" Diseases Detecting"),
+        title: Text(widget.modelName + " Diseases Detecting"),
       ),
       body: Stack(
         children: [

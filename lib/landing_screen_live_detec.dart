@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:pds/main.dart';
-import 'package:tflite/tflite.dart';
-import 'live_detection_screen.dart';
-import 'utils/utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:pds/authentication/login/login_screen.dart';
-import 'model_type_constants.dart';
+import 'package:pds/main.dart';
 // import 'test.dart';
 import 'package:pds/screens/landing_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tflite/tflite.dart';
+
+import 'live_detection_screen.dart';
+import 'model_type_constants.dart';
+import 'utils/utils.dart';
 
 class LandingScreenLiveDetec extends StatefulWidget {
-
   final VoidCallback signOut;
 
   LandingScreenLiveDetec(this.signOut);
 
   @override
-  _LandingScreenLiveDetecState createState() => _LandingScreenLiveDetecState(this.signOut);
+  _LandingScreenLiveDetecState createState() =>
+      _LandingScreenLiveDetecState(this.signOut);
 }
 
 class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
-
   String _modelName = "";
   // String dropdownValue = 'Four';
 
@@ -48,7 +48,6 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
   }
 
   void goToObjectDetectionUi(model) {
-
     setModel(model);
 
     Navigator.of(context).push(MaterialPageRoute(
@@ -69,7 +68,6 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
   }
 
   loadModel() async {
-
     Tflite.close();
     String res;
 
@@ -77,67 +75,73 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
       case "TOMATO":
         res = await Tflite.loadModel(
           // test model
-          model: "assets/tflitemodels/object_detection/tomato_ssd_mobilenet_v2_new_final_100.tflite",
+          model:
+              "assets/tflitemodels/object_detection/tomato_ssd_mobilenet_v2_new_final_100.tflite",
 
           // released model
           // model: "assets/tomato_ssd_mobilenet_v2_new.tflite",
 
           // previous model
           // model: "assets/tomato_ssd_mobilenet_v2_1.tflite",
-          labels: "assets/tflitemodels/object_detection/tomato_ssd_mobilenet_v2_1.txt",
+          labels:
+              "assets/tflitemodels/object_detection/tomato_ssd_mobilenet_v2_1.txt",
         );
-        print("TOMATO MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        print(
+            "TOMATO MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         break;
 
       case "POTATO":
         res = await Tflite.loadModel(
 
-          // test_models
-          // model: "assets/potato_ssd_mobilenet_v2_new.tflite",
-            model: "assets/tflitemodels/object_detection/potato_ssd_mobilenet_v2_new_final_100.tflite",
+            // test_models
+            // model: "assets/potato_ssd_mobilenet_v2_new.tflite",
+            model:
+                "assets/tflitemodels/object_detection/potato_ssd_mobilenet_v2_new_final_100.tflite",
 
             // Released Model
             // model: "assets/potato_ssd_mobilenet_v2_1.tflite",
-            labels: "assets/tflitemodels/object_detection/potato_ssd_mobilenet_v2.txt"
-        );
-        print("POTATO MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            labels:
+                "assets/tflitemodels/object_detection/potato_ssd_mobilenet_v2.txt");
+        print(
+            "POTATO MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         break;
 
       case "MAIZE":
         res = await Tflite.loadModel(
 
-          // test model
-            model: "assets/tflitemodels/object_detection/maize_ssd_mobilenet_v2_new_final_100.tflite",
+            // test model
+            model:
+                "assets/tflitemodels/object_detection/maize_ssd_mobilenet_v2_new_final_100.tflite",
 
             // Released Model
             //   model: "assets/maize_ssd_mobilenet_v2_new.tflite",
             //   previous model
             // model: "assets/maize_ssd_mobilenet_v2_1.tflite",
-            labels: "assets/tflitemodels/object_detection/maize_ssd_mobilenet_v2_1.txt"
-        );
-        print("MAIZE MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            labels:
+                "assets/tflitemodels/object_detection/maize_ssd_mobilenet_v2_1.txt");
+        print(
+            "MAIZE MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         break;
 
       case "GRAPE":
         res = await Tflite.loadModel(
 
-          // test model
-            model: "assets/tflitemodels/object_detection/grape_ssd_mobilenet_v2_new_final_100.tflite",
-            labels: "assets/tflitemodels/object_detection/grape_label.txt"
-        );
-        print("GRAPE MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            // test model
+            model:
+                "assets/tflitemodels/object_detection/grape_ssd_mobilenet_v2_new_final_100.tflite",
+            labels: "assets/tflitemodels/object_detection/grape_label.txt");
+        print(
+            "GRAPE MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         break;
     }
     print(res);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Live Detection",
-            style: TextStyle(color: Colors.blueGrey)),
+        title: Text("Live Detection", style: TextStyle(color: Colors.blueGrey)),
         iconTheme: IconThemeData(color: Colors.blueGrey),
         backgroundColor: Colors.white,
         actions: loadConfigButtonAndLogout(),
@@ -252,43 +256,43 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
 
   List<Widget> loadConfigButtonAndLogout() {
     // if (userRole == "ADMIN") {
-      var configWidget;
+    var configWidget;
 
-      setState(() {
-        configWidget = <Widget>[
-          PopupMenuButton<String>(
-            onSelected: choiceAction,
-            itemBuilder: (BuildContext context){
-              return ModelType.modelType.map((String choice){
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          ),
-          IconButton(
-            onPressed: () {
-              if (signOut != null)
-                signOut();
-              else
-                signOutIfEmpty();
-            },
-            icon: Icon(Icons.power_settings_new),
-          ),
-        ];
-      });
-      return configWidget;
+    setState(() {
+      configWidget = <Widget>[
+        PopupMenuButton<String>(
+          onSelected: choiceAction,
+          itemBuilder: (BuildContext context) {
+            return ModelType.modelType.map((String choice) {
+              return PopupMenuItem<String>(
+                value: choice,
+                child: Text(choice),
+              );
+            }).toList();
+          },
+        ),
+        IconButton(
+          onPressed: () {
+            // if (signOut != null)
+            //   signOut();
+            // else
+            signOutIfEmpty();
+          },
+          icon: Icon(Icons.power_settings_new),
+        ),
+      ];
+    });
+    return configWidget;
     // }
   }
 
-  void choiceAction(String choice){
-    if(choice == ModelType.CModels){
+  void choiceAction(String choice) {
+    if (choice == ModelType.CModels) {
       print('Classifications');
       Navigator.of(context).pop();
       Navigator.push(
         context,
-          MaterialPageRoute(builder: (context) => LandingScreen(signOut)),
+        MaterialPageRoute(builder: (context) => LandingScreen(signOut)),
       );
 
       // if (signOut != null) {
@@ -320,13 +324,9 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
-            (Route<dynamic> route) => false,
+        (Route<dynamic> route) => false,
       );
 //      _loginStatus = LoginStatus.notSignIn;
     });
   }
-
-
 }
-
-

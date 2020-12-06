@@ -4,14 +4,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as ImageLibrary;
 import 'package:pds/authentication/login/login_screen.dart';
+import 'package:pds/landing_screen_live_detec.dart';
+import 'package:pds/model_type_constants.dart';
 import 'package:pds/models/plant_image.dart';
 import 'package:pds/screens/configuration/configuration_screen.dart';
 import 'package:pds/screens/plantdiagnosisscreen/take_image_screen.dart';
 import 'package:pds/services/response/plant_image_response.dart';
 import 'package:pds/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:pds/model_type_constants.dart';
-import 'package:pds/landing_screen_live_detec.dart';
 
 class LandingScreen extends StatefulWidget {
   final VoidCallback signOut;
@@ -252,8 +252,8 @@ class _LandingScreenState extends State<LandingScreen>
         configWidget = <Widget>[
           PopupMenuButton<String>(
             onSelected: choiceAction,
-            itemBuilder: (BuildContext context){
-              return ModelType.modelType.map((String choice){
+            itemBuilder: (BuildContext context) {
+              return ModelType.modelType.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -289,8 +289,8 @@ class _LandingScreenState extends State<LandingScreen>
         configWidget = <Widget>[
           PopupMenuButton<String>(
             onSelected: choiceAction,
-            itemBuilder: (BuildContext context){
-              return ModelType.modelType.map((String choice){
+            itemBuilder: (BuildContext context) {
+              return ModelType.modelType.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -300,10 +300,10 @@ class _LandingScreenState extends State<LandingScreen>
           ),
           IconButton(
             onPressed: () {
-              if (signOut != null)
-                signOut();
-              else
-                signOutIfEmpty();
+              // if (signOut != null)
+              //   signOut();
+              // else
+              signOutIfEmpty();
             },
             icon: Icon(Icons.power_settings_new),
           )
@@ -346,13 +346,14 @@ class _LandingScreenState extends State<LandingScreen>
     }
   }
 
-  void choiceAction(String choice){
-    if(choice == ModelType.LDModels){
+  void choiceAction(String choice) {
+    if (choice == ModelType.LDModels) {
       print('Live Detection');
       Navigator.of(context).pop();
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => LandingScreenLiveDetec(signOut)),
+        MaterialPageRoute(
+            builder: (context) => LandingScreenLiveDetec(signOut)),
       );
 
       // if (signOut != null) {

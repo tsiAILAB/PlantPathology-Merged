@@ -7,8 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image/image.dart' as ImageLibrary;
 import 'package:image_picker/image_picker.dart';
-import 'package:pds/models/plant_image.dart';
 import 'package:pds/models/diagnosis_result.dart';
+import 'package:pds/models/plant_image.dart';
 import 'package:pds/screens/plantdiagnosisscreen/plant_details_screen.dart';
 import 'package:pds/services/request/upload_image.dart';
 import 'package:pds/services/tflitemodelservice/check_image_with_tflite.dart';
@@ -227,7 +227,22 @@ class _TakeImageScreenState extends State<TakeImageScreen> {
     setState(() {
       widget.signOut();
     });
-    Utils.gotoHomeUi(context);
+    signOutIfEmpty();
+    // Utils.gotoHomeUi(context);
+  }
+
+  signOutIfEmpty() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", null);
+      preferences.commit();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+        (Route<dynamic> route) => false,
+      );
+//      _loginStatus = LoginStatus.notSignIn;
+    });
   }
 
   getPref() async {
