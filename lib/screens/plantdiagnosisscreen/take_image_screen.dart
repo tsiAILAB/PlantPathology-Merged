@@ -15,6 +15,8 @@ import 'package:pds/services/tflitemodelservice/check_image_with_tflite.dart';
 import 'package:pds/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../authentication/login/login_screen.dart';
+
 class TakeImageScreen extends StatefulWidget {
   final VoidCallback signOut;
   final PlantImage plantImage;
