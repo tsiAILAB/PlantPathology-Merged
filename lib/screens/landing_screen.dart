@@ -41,7 +41,10 @@ class _LandingScreenState extends State<LandingScreen>
       new PlantImage("Potato", "assets/images/potato.jpg");
   PlantImage tomatoImageObj =
       new PlantImage("Tomato", "assets/images/tomato.jpg");
-  PlantImage maizeImageObj = new PlantImage("Maize", "assets/images/maze.jpg");
+  PlantImage maizeImageObj =
+      new PlantImage("Maize", "assets/images/maze.jpg");
+  PlantImage grapeImageObj =
+      new PlantImage("Grape", "assets/images/grape.jpg");
 
   @override
   void initState() {
@@ -60,7 +63,7 @@ class _LandingScreenState extends State<LandingScreen>
 //          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             AppBar(
-              title: Text('Plant Selection',
+              title: Text('Diseases Detection',
                   style: TextStyle(color: Colors.blueGrey)),
               iconTheme: IconThemeData(color: Colors.blueGrey),
               backgroundColor: Colors.white,
@@ -69,6 +72,15 @@ class _LandingScreenState extends State<LandingScreen>
             Container(
               child: Column(
                 children: <Widget>[
+                  SizedBox(height: 20),
+                  Text(
+                    "Select The Plant",
+                    style: TextStyle(
+                        color: Colors.blueGrey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15
+                    ),
+                  ),
                   SizedBox(height: 20),
                   FlatButton(
                     onPressed: () {
@@ -129,6 +141,30 @@ class _LandingScreenState extends State<LandingScreen>
                   ),
                   Text(
                     "Maize",
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.0),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            Container(
+              child: Column(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () {
+                      print("I'm Grape");
+                      goToPlantUi(grapeImageObj);
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('${grapeImageObj.imageUrl}'),
+                      radius: 60,
+                    ),
+                  ),
+                  Text(
+                    "Grape",
                     style: TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.bold,
@@ -260,6 +296,15 @@ class _LandingScreenState extends State<LandingScreen>
                 );
               }).toList();
             },
+            child: FlatButton(
+              child:Text(
+                "Select Mode",
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
           ),
           IconButton(
             onPressed: () {
@@ -297,6 +342,15 @@ class _LandingScreenState extends State<LandingScreen>
                 );
               }).toList();
             },
+            child: FlatButton(
+              child:Text(
+                  "Select Mode",
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
           ),
           IconButton(
             onPressed: () {

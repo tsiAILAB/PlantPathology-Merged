@@ -24,6 +24,7 @@ Future<Null> main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(MaterialApp(
+      // debugShowCheckedModeBanner: false,
       home: MyApp(),
     ));
   });

@@ -127,6 +127,9 @@ class _TakeImageScreenState extends State<TakeImageScreen> {
       case "Maize":
         selectedPlantImageLink = 'assets/images/maze.jpg';
         break;
+      case "Grape":
+        selectedPlantImageLink = 'assets/images/grape.jpg';
+        break;
       default:
         selectedPlantImageLink = null;
     }

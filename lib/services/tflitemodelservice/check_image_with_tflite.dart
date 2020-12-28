@@ -32,6 +32,11 @@ class CheckImageWithTFLite {
               "assets/tflitemodels/maize.txt");
           tfModels.add(tfLiteModel);
           break;
+        case "Grape":
+          tfLiteModel = TFLiteModel("assets/tflitemodels/grape.tflite",
+              "assets/tflitemodels/grape.txt");
+          tfModels.add(tfLiteModel);
+          break;
 
         default:
           tfLiteModel = TFLiteModel("assets/tflitemodels/tomato.tflite",

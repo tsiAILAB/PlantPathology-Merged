@@ -74,64 +74,42 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
     switch (_modelName) {
       case "TOMATO":
         res = await Tflite.loadModel(
-          // test model
           model:
-              "assets/tflitemodels/object_detection/tomato_ssd_mobilenet_v2_new_final_100.tflite",
-
-          // released model
-          // model: "assets/tomato_ssd_mobilenet_v2_new.tflite",
-
-          // previous model
-          // model: "assets/tomato_ssd_mobilenet_v2_1.tflite",
+              "assets/tflitemodels/object_detection/tomato.tflite",
           labels:
-              "assets/tflitemodels/object_detection/tomato_ssd_mobilenet_v2_1.txt",
+              "assets/tflitemodels/object_detection/tomato.txt",
         );
         print(
-            "TOMATO MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            "TOMATO MODEL LOADED!!!");
         break;
 
       case "POTATO":
         res = await Tflite.loadModel(
-
-            // test_models
-            // model: "assets/potato_ssd_mobilenet_v2_new.tflite",
             model:
-                "assets/tflitemodels/object_detection/potato_ssd_mobilenet_v2_new_final_100.tflite",
-
-            // Released Model
-            // model: "assets/potato_ssd_mobilenet_v2_1.tflite",
+                "assets/tflitemodels/object_detection/potato.tflite",
             labels:
-                "assets/tflitemodels/object_detection/potato_ssd_mobilenet_v2.txt");
+                "assets/tflitemodels/object_detection/potato.txt");
         print(
-            "POTATO MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            "POTATO MODEL LOADED!!!");
         break;
 
       case "MAIZE":
         res = await Tflite.loadModel(
-
-            // test model
             model:
-                "assets/tflitemodels/object_detection/maize_ssd_mobilenet_v2_new_final_100.tflite",
-
-            // Released Model
-            //   model: "assets/maize_ssd_mobilenet_v2_new.tflite",
-            //   previous model
-            // model: "assets/maize_ssd_mobilenet_v2_1.tflite",
+                "assets/tflitemodels/object_detection/maize.tflite",
             labels:
-                "assets/tflitemodels/object_detection/maize_ssd_mobilenet_v2_1.txt");
+                "assets/tflitemodels/object_detection/maize.txt");
         print(
-            "MAIZE MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            "MAIZE MODEL LOADED!!!");
         break;
 
       case "GRAPE":
         res = await Tflite.loadModel(
-
-            // test model
             model:
-                "assets/tflitemodels/object_detection/grape_ssd_mobilenet_v2_new_final_100.tflite",
-            labels: "assets/tflitemodels/object_detection/grape_label.txt");
+                "assets/tflitemodels/object_detection/grape.tflite",
+            labels: "assets/tflitemodels/object_detection/grape.txt");
         print(
-            "GRAPE MODEL LOADED..............................................!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            "GRAPE MODEL LOADED!!!");
         break;
     }
     print(res);
@@ -141,7 +119,7 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Live Detection", style: TextStyle(color: Colors.blueGrey)),
+        title: Text("Diseases Segmentation", style: TextStyle(color: Colors.blueGrey)),
         iconTheme: IconThemeData(color: Colors.blueGrey),
         backgroundColor: Colors.white,
         actions: loadConfigButtonAndLogout(),
@@ -151,6 +129,15 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 20),
+              Text(
+                "Select The Plant",
+                style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.bold,
+                  fontSize: 15
+                ),
+              ),
               SizedBox(height: 20),
               Container(
                 child: Column(
@@ -247,6 +234,7 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
                   ],
                 ),
               ),
+              SizedBox(height: 20),
             ],
           ),
         ),
@@ -270,6 +258,15 @@ class _LandingScreenLiveDetecState extends State<LandingScreenLiveDetec> {
               );
             }).toList();
           },
+          child: FlatButton(
+            child:Text(
+              "Select Mode",
+              style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
         ),
         IconButton(
           onPressed: () {
