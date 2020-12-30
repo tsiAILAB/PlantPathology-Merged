@@ -44,7 +44,11 @@
 
 <!-- Permission options for the `camera` group -->
      <key>NSCameraUsageDescription</key>
-     <string>PDS would like to take picture with camera</string>
+     <string>PDS would like to access camera</string>
+
+     <!-- Permission option for microphone -->
+     <key>NSMicrophoneUsageDescription</key>
+     <string>PDS would like to access microphone</string>
 
     <!-- Permission option for internet -->
     <key>NSAppTransportSecurity</key>
