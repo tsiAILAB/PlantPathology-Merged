@@ -42,7 +42,7 @@ packages:
       name: camera_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.0.4"
   characters:
     dependency: transitive
     description:
@@ -105,7 +105,7 @@ packages:
       name: curved_navigation_bar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.7"
+    version: "0.3.4"
   fake_async:
     dependency: transitive
     description:
@@ -152,7 +152,7 @@ packages:
       name: flutter_switch
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.1.5"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -169,7 +169,7 @@ packages:
       name: fluttertoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.1.6"
+    version: "7.1.5"
   group_radio_button:
     dependency: "direct main"
     description:
