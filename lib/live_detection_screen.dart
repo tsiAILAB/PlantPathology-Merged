@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:camera/camera.dart';
+// import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,8 +11,8 @@ import 'pretrainded_models_const.dart';
 import 'utils/utils.dart';
 
 class LiveDetectionScreen extends StatefulWidget {
-  final List<CameraDescription> cameras;
-
+  // final List<CameraDescription> cameras;
+var cameras;
   final modelName;
   LiveDetectionScreen(this.cameras, this.modelName);
 
